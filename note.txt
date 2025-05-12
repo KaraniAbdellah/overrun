@@ -1,0 +1,44 @@
+To practice overrun (or buffer overflow), you need to:
+
+Write a simple C program that accepts user input into a buffer (array) with a limited size.
+
+Input more data than the buffer can handle.
+
+Observe the effects, such as crashing the program or corrupting memory.
+
+Example Steps:
+Create a C program that reads user input:
+
+c
+Copy
+Edit
+#include <stdio.h>
+
+int main() {
+    char buffer[10]; // Small buffer to store user input
+    printf("Enter your name: ");
+    gets(buffer);  // Unsafe function (gets) that doesn't check input length
+    printf("Hello, %s!\n", buffer);
+    return 0;
+}
+Run the program and input more than 10 characters.
+
+Observe what happens:
+
+You might see the program crash or behave unexpectedly.
+
+The extra characters you input will overwrite memory beyond the buffer.
+
+Learn the risks:
+
+This type of vulnerability can lead to exploits, like code injection or control flow manipulation.
+
+To practice safely:
+Use safe functions like fgets() instead of gets(), which checks the length of the input and prevents overflow.
+
+Experiment in a controlled environment like a virtual machine or container to avoid affecting your main system.
+
+Additional Tools:
+Use gdb (GNU Debugger) to observe memory during execution.
+
+Practice on platforms like Hack The Box or OverTheWire to access challenges with buffer overflow scenarios.
